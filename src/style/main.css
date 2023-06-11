@@ -22,11 +22,32 @@ body,
 :root {
     --brd-radius: 5.5px;
     --main-bg: #f3f3f3;
+    --container-bg: white;
     --clr: #211e1e;
     --secondary-clr: #9e9e9e;
     --accent-clr: #b469ff;
+    --nav-link-brd: transparent;
+    --nav-brd: rgba(217, 217, 217, 0.778);
+    --nav-link-hvr-bg: rgba(237, 237, 237, 0.44);
+    --nav-link-clr: rgb(28, 26, 26);
+    --svg-clr: var(--nav-link-clr);
     --max-width: 1400px;
 }
+.dark-theme {
+    --brd-radius: 5.5px;
+    --main-bg: #171B20;
+    --container-bg: #1E232B;
+    --clr: #f1f1f1;
+    --secondary-clr: #979797;
+    --accent-clr: #b469ff;
+    --nav-link-brd: transparent;
+    --nav-brd: rgb(28, 26, 48);
+    --nav-link-hvr-bg: hsla(0, 0%, 100%, 0.03);
+    --nav-link-clr: rgb(102, 102, 107);
+    --svg-clr: var(--nav-link-clr);
+    --max-width: 1400px;
+}
+
 /* styling navbar elements */
 nav {
     display: flex;
@@ -35,7 +56,8 @@ nav {
     justify-content: space-between;
     height: 68px;
     width: 100%;
-    border-bottom: 1.8px solid #edebeb;
+    border-bottom: 1px solid var(--nav-brd);
+    background-color: var(--container-bg);
     font-family: 'Poppins', 'Open Sans';
 }
     .nav-wrapper {
@@ -57,15 +79,25 @@ nav {
             flex-direction: row;
             align-items: center;
             font-weight: 500;
-            margin: 0 10px;
+            margin: 0 8px;
             transition: all 200ms ease 100ms;
             padding: 8px 16px;
-            border: 1.5px solid white;
+            border: 1.5px solid var(--nav-link-brd);
             border-radius: var(--brd-radius);
         }
-                .nav-link-container:hover {
-                    border: 1.5px solid rgba(245, 245, 245, 0.709);
-                    background-color: rgba(245, 245, 245, 0.672);
+        .theme-icon-container {
+            margin: 4px 14px 0 10px;
+            padding: 4.5px 20px;
+            border: 1.5px solid var(--nav-link-brd);
+            border-radius: var(--brd-radius);
+            transition: all 200ms ease 100ms;
+        }
+        .themeIcon path {
+            stroke: var(--svg-clr);
+        }
+                .nav-link-container:hover, .theme-icon-container:hover {
+                    border: 1.5px solid var(--nav-link-hvr-bg);
+                    background-color: var(--nav-link-hvr-bg);
                     transform: scale(1.03);
                 }
                 .nav-link-container:active {
@@ -73,14 +105,17 @@ nav {
                 }
             .nav-link-container > p {
                 margin: 0;
-                font-size: 0.85rem;
-                color: var(--clr);
+                font-size: 0.82rem;
+                color: var(--nav-link-clr);
+            }
+            .svg-clr path {
+                fill: var(--svg-clr);
             }
             .nav-link-container > img, .nav-link-container > svg {
                 margin: 0 9.5px 0 0;
             }
         .nav-middle > img {
-            height: auto;
+             height: auto;
             width: 125px;
         }
 /* file-processing component */
@@ -151,7 +186,6 @@ nav {
         .loading-bar:nth-child(4) {
             animation-delay: 0.35s;
         }
-        
         @keyframes loading-wave-animation {
             0% {
             height: 20px;
@@ -160,7 +194,7 @@ nav {
             50% {
             height: 80px;
             }
-        
+    
             100% {
             height: 20px;
             }
@@ -169,22 +203,23 @@ nav {
 main {
     background-color: var(--main-bg);   
     width: 100%;
-    height: 100vh;
+    height: auto;
     overflow: hidden;
 }
 .ss-parent { 
+    padding: 0 0 70px 0;
     display: grid; 
     grid-template-columns: 1fr; 
     grid-template-rows: 1fr auto; 
     grid-column-gap: 0px;
     grid-row-gap: 60px; 
     max-width: var(--max-width);
-    margin: 100px auto 0 auto;
+    margin: 60px auto 0 auto;
     }
     .ss-div1 { 
         grid-area: 1 / 1 / 2 / 2; 
         border-radius: var(--brd-radius);
-        background-color: white;
+        background-color: var(--container-bg);
         height: 440px;
     } 
     .ss-div2 { 
@@ -197,7 +232,7 @@ main {
     } 
         .ss-info-container {
             border-radius: var(--brd-radius);
-            background-color: white;
+            background-color: var(--container-bg);
             width: 425px;
             height: 260px;
             display: flex;
