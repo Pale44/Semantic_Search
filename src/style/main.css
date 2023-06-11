@@ -1,0 +1,233 @@
+/* main css for all react components */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+html,
+body,
+#root,
+.app,
+.content {
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter', 'Open Sans';
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+.app {
+    display: flex;
+    position: relative;
+}
+:root {
+    --brd-radius: 5.5px;
+    --main-bg: #f3f3f3;
+    --clr: #211e1e;
+    --secondary-clr: #9e9e9e;
+    --accent-clr: #b469ff;
+    --max-width: 1400px;
+}
+/* styling navbar elements */
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    width: 100%;
+    border-bottom: 1.8px solid #edebeb;
+    font-family: 'Poppins', 'Open Sans';
+}
+    .nav-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+    }
+    .nav-left, .nav-middle, .nav-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+        .nav-link-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 200ms ease 100ms;
+            padding: 8px 16px;
+            border: 1.5px solid white;
+            border-radius: var(--brd-radius);
+        }
+                .nav-link-container:hover {
+                    border: 1.5px solid rgba(245, 245, 245, 0.709);
+                    background-color: rgba(245, 245, 245, 0.672);
+                    transform: scale(1.03);
+                }
+                .nav-link-container:active {
+                    transform: scale(0.95);
+                }
+            .nav-link-container > p {
+                margin: 0;
+                font-size: 0.85rem;
+                color: var(--clr);
+            }
+            .nav-link-container > img, .nav-link-container > svg {
+                margin: 0 9.5px 0 0;
+            }
+        .nav-middle > img {
+            height: auto;
+            width: 125px;
+        }
+/* file-processing component */
+.uploading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+    .uploading-container > p {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--secondary-clr);
+        line-height: 23px;
+    }
+    .cancel-btn-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+        .cancel-btn-container > button {
+            border-radius: var(--brd-radius);
+            transition: all 140ms ease 70ms;
+            border: none;
+            outline: none;
+            margin: 0 auto 40px auto;
+            font-size: 0.9rem;
+            padding: 12px 60px;
+            font-weight: 600;
+            color: #f54b2a;
+            background-color: hsla(10, 91%, 56%, 0.108);
+        }
+            .cancel-btn-container > button:hover {
+                background-color: hsla(10, 91%, 56%, 0.22);
+            }
+        .loading-wave {
+            width: 300px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        
+        .loading-bar {
+            width: 25px;
+            height: 15px;
+            margin: 0 7.5px;
+            background-color: var(--accent-clr);
+            border-radius: 5px;
+            animation: loading-wave-animation 1.2s ease-in-out infinite;
+        }
+        
+        .loading-bar:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+        
+        .loading-bar:nth-child(3) {
+            animation-delay: 0.25s;
+        }
+        
+        .loading-bar:nth-child(4) {
+            animation-delay: 0.35s;
+        }
+        
+        @keyframes loading-wave-animation {
+            0% {
+            height: 20px;
+            }
+        
+            50% {
+            height: 80px;
+            }
+        
+            100% {
+            height: 20px;
+            }
+        }
+/* semantic search component  */
+main {
+    background-color: var(--main-bg);   
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.ss-parent { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr auto; 
+    grid-column-gap: 0px;
+    grid-row-gap: 60px; 
+    max-width: var(--max-width);
+    margin: 100px auto 0 auto;
+    }
+    .ss-div1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+        border-radius: var(--brd-radius);
+        background-color: white;
+        height: 440px;
+    } 
+    .ss-div2 { 
+        grid-area: 2 / 1 / 3 / 2; 
+        border-radius: var(--brd-radius);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    } 
+        .ss-info-container {
+            border-radius: var(--brd-radius);
+            background-color: white;
+            width: 425px;
+            height: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+            .ss-icon-container {
+                border-radius: var(--brd-radius);
+                padding: 5px;
+                margin: 32px 0 23px 0;
+            }
+                .ss-first-icon {
+                    background-color: hsla(223, 100%, 70%, 0.11);
+                }
+                .ss-second-icon {
+                    background-color: rgba(255, 115, 55, 0.102);
+                }
+                .ss-third-icon {
+                    background-color: hsla(241, 100%, 57%, 0.11);
+                }
+            .ss-info-container > h4 {
+                margin: 0;
+                color: var(--clr);
+                font-size: 0.95rem;
+            }
+            .ss-info-container > p {
+                margin: 18px 0 0 0;
+                color: var(--secondary-clr);
+                font-size: 0.83rem;
+                text-align: center;
+                width: 75%;
+                line-height: 25px;
+            }
